@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneh Sathi - Luxury Invoice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="invoice">
+        <form id="invoiceForm">
+
+            <header>
+                <h1 class="brand">SNEH SATHI</h1>
+                <p class="tagline">PHOTOGRAPHY & FILMS</p>
+                <h2 class="invoice-title">INVOICE</h2>
+                <div class="gold-line"></div>
+            </header>
+
+            <section>
+                <h3>Invoice Details</h3>
+                <div class="details-grid">
+                    <div class="field">
+                        <label for="invoiceNo">Invoice No</label>
+                        <input id="invoiceNo" type="text" placeholder="SS-INV-001" value="SS-INV-001">
+                    </div>
+
+                    <div class="field">
+                        <label for="invoiceDate">Invoice Date</label>
+                        <input id="invoiceDate" type="date">
+                    </div>
+
+                    <div class="field">
+                        <label for="eventDate">Event Date</label>
+                        <input id="eventDate" type="date">
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h3>Client Details</h3>
+                <div class="client-grid">
+                    <div class="field">
+                        <label for="clientName">Client Name</label>
+                        <input id="clientName" type="text" placeholder="Enter client name">
+                    </div>
+
+                    <div class="field">
+                        <label for="clientMobile">Mobile / WhatsApp</label>
+                        <input id="clientMobile" type="tel" placeholder="Enter mobile number">
+                    </div>
+
+                    <div class="field">
+                        <label for="eventType">Event Type</label>
+                        <select id="eventType">
+                            <option selected>Select Event</option>
+                            <option>Wedding</option>
+                            <option>Pre-Wedding</option>
+                            <option>Birthday</option>
+                            <option>Engagement</option>
+                            <option>Anniversary</option>
+                            <option>Event</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="venue">Venue</label>
+                        <input id="venue" type="text" placeholder="Event venue">
+                    </div>
+
+                    <div class="field full">
+                        <label for="address">Address</label>
+                        <textarea id="address" placeholder="Enter complete address"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h3>Photography Services</h3>
+                <table class="invoice-table">
+                    <thead>
+                        <tr>
+                            <th style="width:45%;">Service</th>
+                            <th style="width:15%;">Days</th>
+                            <th style="width:20%;">Rate</th>
+                            <th style="width:20%;">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input data-role="service" type="text" placeholder="service name">
+                            </td>
+                            <td>
+                                <input data-role="Days" type="number" min="0" step="1" value="" placeholder="0">
+                            </td>
+                            <td>
+                                <input data-role="rate" type="number" min="0" step="1" placeholder="₹ 0">
+                            </td>
+                            <td class="amount">₹ 0</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <input data-role="service" type="text" placeholder="Additional Service">
+                            </td>
+                            <td>
+                                <input data-role="Days" type="number" min="0" step="1" value="" placeholder="0">
+                            </td>
+                            <td>
+                                <input data-role="rate" type="number" min="0" step="1" placeholder="₹ 0">
+                            </td>
+                            <td class="amount">₹ 0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <div class="total-box">
+                <div class="total-row">
+                    <span>Subtotal</span>
+                    <input id="subtotalInput" type="number" value="" readonly>
+                </div>
+
+                <div class="total-row">
+                    <span>Discount</span>
+                    <input id="discountInput" type="number" min="0" step="100" value="" placeholder="₹0.00">
+                </div>
+
+                <div class="total-row">
+                    <span>Advance Paid</span>
+                    <input id="advancePaidInput" type="number" min="0" step="100" value="" placeholder="₹0.00">
+                </div>
+
+                <div class="total-row grand-total">
+                    <span>Balance Due</span>
+                    <input id="balanceDueInput" type="number" value="" readonly>
+                </div>
+            </div>
+
+            <section class="notes">
+                <h3>Notes & Terms</h3>
+                <textarea id="notesInput" placeholder="Payment terms, delivery details, cancellation policy, etc."></textarea>
+            </section>
+
+            <div class="signature">
+                <div class="signature-box">
+                    <span>Client Signature</span>
+                    <label class="upload-field">
+                        <input id="clientSignatureUpload" type="file" accept="image/*">
+                        <span>Upload Photo</span>
+                    </label>
+                </div>
+
+                <div class="signature-box permanent-signature">
+                        <span class="signature-name">Shashi kumar</span>
+                    <span>Authorized Signature</span>
+                    <div class="permanent-signature-box">Owner of Sneh sathi</div>
+                </div>
+            </div>
+
+            <footer>
+                <h3>Terms & Conditions</h3>
+                <textarea id="footerNotes" rows="6" readonly>
+                    
+1. Booking is confirmed after receipt of the agreed advance amount.
+2. Extra days, additional services and travel charges may be charged separately.
+3. Final photographs/videos will be delivered as per the agreed package.
+4. Cancellation/rescheduling will be governed by the mutually agreed terms.
+                </textarea>
+
+                <h4>Thank You</h4>
+                <p>Capturing emotions • Creating memories • Telling stories</p>
+                <p>SNEH SATHI PHOTOGRAPHY & FILMS</p>
+            </footer>
+
+            <div class="buttons">
+                <button type="submit" id="sendBtn">Send WhatsApp</button>
+                <button type="button" id="printBtn" onclick="window.print()">Print / Save PDF</button>
+            </div>
+
+            <p class="status-message" id="statusMessage" aria-live="polite"></p>
+
+        </form>
+    </div>
+
+    <script>
+        (() => {
+            const form = document.getElementById('invoiceForm');
+            const businessNumber = '917644805373';
+            const subtotalInput = document.getElementById('subtotalInput');
+            const discountInput = document.getElementById('discountInput');
+            const advancePaidInput = document.getElementById('advancePaidInput');
+            const balanceDueInput = document.getElementById('balanceDueInput');
+            const statusMessage = document.getElementById('statusMessage');
+            const invoiceDateInput = document.getElementById('invoiceDate');
+            const eventDateInput = document.getElementById('eventDate');
+            const clientMobileInput = document.getElementById('clientMobile');
+
+            const currency = new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR',
+                maximumFractionDigits: 2
+            });
+
+            const formatCurrency = (value) => currency.format(Number(value) || 0);
+
+            const rows = Array.from(document.querySelectorAll('.invoice-table tbody tr'));
+
+            function setDefaultDates() {
+                const today = new Date();
+                invoiceDateInput.valueAsDate = today;
+            }
+
+            function normalizePhone(phone) {
+                const digits = (phone || '').replace(/\D/g, '');
+                if (!digits) return '';
+
+                if (digits.length === 10) return `91${digits}`;
+                if (digits.length > 10 && digits.startsWith('0')) return `91${digits.slice(1)}`;
+                return digits;
+            }
+
+            function validateEventDate() {
+                const eventDateValue = eventDateInput.value;
+
+                if (!eventDateValue) {
+                    eventDateInput.setCustomValidity('Please select an event date.');
+                    return false;
+                }
+
+                const selectedDate = new Date(`${eventDateValue}T00:00:00`);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                if (selectedDate < today) {
+                    eventDateInput.setCustomValidity('Event date cannot be earlier than today.');
+                    return false;
+                }
+
+                eventDateInput.setCustomValidity('');
+                return true;
+            }
+
+            function updateTotals() {
+                let subtotal = 0;
+
+                rows.forEach((row) => {
+                    const serviceInput = row.querySelector('[data-role="service"]');
+                    const qtyInput = row.querySelector('[data-role="Days"]');
+                    const rateInput = row.querySelector('[data-role="rate"]');
+                    const amountCell = row.querySelector('.amount');
+
+                    const qty = Number(qtyInput.value || 0);
+                    const rate = Number(rateInput.value || 0);
+                    const amount = qty * rate;
+
+                    subtotal += amount;
+                    amountCell.textContent = formatCurrency(amount);
+
+                    if (serviceInput.value.trim() === '') {
+                        serviceInput.setAttribute('placeholder', 'Service name');
+                    }
+                });
+
+                subtotalInput.value = subtotal.toFixed(2);
+
+                const discount = Number(discountInput.value || 0);
+                const advance = Number(advancePaidInput.value || 0);
+                const balance = Math.max(subtotal - discount - advance, 0);
+
+                balanceDueInput.value = balance.toFixed(2);
+            }
+
+            function buildInvoiceMessage() {
+                const data = {
+                    invoiceNo: document.getElementById('invoiceNo').value || 'SS-INV-001',
+                    invoiceDate: invoiceDateInput.value || 'Not specified',
+                    eventDate: eventDateInput.value || 'Not specified',
+                    clientName: document.getElementById('clientName').value || 'Not specified',
+                    clientMobile: clientMobileInput.value || 'Not specified',
+                    eventType: document.getElementById('eventType').value || 'Not specified',
+                    venue: document.getElementById('venue').value || 'Not specified',
+                    address: document.getElementById('address').value || 'Not specified',
+                    notes: document.getElementById('notesInput').value || 'No additional notes',
+                    footerNotes: document.getElementById('footerNotes').value || ''
+                };
+
+                let servicesText = '';
+                rows.forEach((row) => {
+                    const service = row.querySelector('[data-role="service"]').value || 'Service';
+                    const qty = Number(row.querySelector('[data-role="Days"]').value || 0);
+                    const rate = Number(row.querySelector('[data-role="rate"]').value || 0);
+                    const amount = qty * rate;
+
+                    if (service.trim() || qty || rate) {
+                        servicesText += `- ${service || 'Service'} | Qty: ${qty} | Rate: ${formatCurrency(rate)} | Amount: ${formatCurrency(amount)}\n`;
+                    }
+                });
+
+                return [
+                    '*SNEH SATHI INVOICE*',
+                    `Invoice No: ${data.invoiceNo}`,
+                    `Invoice Date: ${data.invoiceDate}`,
+                    `Event Date: ${data.eventDate}`,
+                    '',
+                    '*Client Details*',
+                    `Client Name: ${data.clientName}`,
+                    `Mobile / WhatsApp: ${data.clientMobile}`,
+                    `Event Type: ${data.eventType}`,
+                    `Venue: ${data.venue}`,
+                    `Address: ${data.address}`,
+                    '',
+                    '*Services*',
+                    servicesText || '- No services added',
+                    '',
+                    '*Billing Summary*',
+                    `Subtotal: ${formatCurrency(subtotalInput.value)}`,
+                    `Discount: ${formatCurrency(discountInput.value)}`,
+                    `Advance Paid: ${formatCurrency(advancePaidInput.value)}`,
+                    `Balance Due: ${formatCurrency(balanceDueInput.value)}`,
+                    '',
+                    '*Notes & Terms*',
+                    data.notes || 'No additional notes',
+                    '',
+                    '*Footer Notes*',
+                    data.footerNotes
+                ].join('\n');
+            }
+
+            function buildReceiptMessage() {
+                const data = {
+                    clientName: document.getElementById('clientName').value || 'Client',
+                    invoiceNo: document.getElementById('invoiceNo').value || 'SS-INV-001',
+                    eventType: document.getElementById('eventType').value || 'Event',
+                    venue: document.getElementById('venue').value || 'Venue not specified',
+                    balanceDue: formatCurrency(balanceDueInput.value)
+                };
+
+                return [
+                    `Hi ${data.clientName}!`,
+                    '',
+                    'Thank you for choosing Sneh Sathi Photography & Films.',
+                    'This is your receipt for invoice ' + data.invoiceNo + '.',
+                    '',
+                    `Event Type: ${data.eventType}`,
+                    `Venue: ${data.venue}`,
+                    `Balance Due: ${data.balanceDue}`,
+                    '',
+                    'We look forward to capturing your special moments.',
+                    'SNEH SATHI PHOTOGRAPHY & FILMS'
+                ].join('\n');
+            }
+
+            function sendToWhatsApp(number, text) {
+                const normalized = normalizePhone(number);
+                if (!normalized) return false;
+
+                const url = `https://wa.me/${normalized}?text=${encodeURIComponent(text)}`;
+                window.open(url, '_blank');
+                return true;
+            }
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                if (!validateEventDate()) {
+                    statusMessage.textContent = 'Event date cannot be earlier than today. Please choose a valid date.';
+                    statusMessage.classList.add('visible');
+                    eventDateInput.focus();
+                    eventDateInput.reportValidity();
+                    return;
+                }
+
+                updateTotals();
+
+                const invoiceText = buildInvoiceMessage();
+                const receiptText = buildReceiptMessage();
+                const sentToOwner = sendToWhatsApp(businessNumber, invoiceText);
+                const sentToClient = sendToWhatsApp(clientMobileInput.value, receiptText);
+
+                if (sentToOwner) {
+                    statusMessage.textContent = sentToClient
+                        ? 'Invoice sent to your WhatsApp and receipt opened for the client.'
+                        : 'Invoice sent to your WhatsApp. Add a client mobile number to send the receipt.';
+                } else {
+                    statusMessage.textContent = 'Unable to send invoice. Please check your WhatsApp number.';
+                }
+
+                statusMessage.classList.add('visible');
+                setTimeout(() => statusMessage.classList.remove('visible'), 5000);
+            });
+
+            rows.forEach((row) => {
+                const qtyInput = row.querySelector('[data-role="Days"]');
+                const rateInput = row.querySelector('[data-role="rate"]');
+
+                qtyInput.addEventListener('input', updateTotals);
+                rateInput.addEventListener('input', updateTotals);
+            });
+
+            eventDateInput.addEventListener('input', () => {
+                eventDateInput.setCustomValidity('');
+                statusMessage.textContent = '';
+                statusMessage.classList.remove('visible');
+            });
+
+            discountInput.addEventListener('input', updateTotals);
+            advancePaidInput.addEventListener('input', updateTotals);
+
+            setDefaultDates();
+            updateTotals();
+        })();
+    </script>
+
+</body>
+
+</html>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Georgia", "Times New Roman", serif;
+    background: #f5f2ec;
+    color: #2d2a26;
+    padding: 40px 20px;
+}
+
+.invoice {
+    max-width: 900px;
+    margin: auto;
+    background: #fff;
+    padding: 55px;
+    position: relative;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+}
+
+.invoice::before {
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border: 1px solid #c6a15b;
+    pointer-events: none;
+}
+
+.invoice header {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.brand {
+    font-size: 38px;
+    letter-spacing: 8px;
+    font-weight: 600;
+    color: #222;
+}
+
+.tagline {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: #a4813f;
+    margin-top: 8px;
+}
+
+.invoice-title {
+    margin-top: 28px;
+    font-size: 25px;
+    letter-spacing: 5px;
+    font-weight: normal;
+}
+
+.gold-line {
+    width: 80px;
+    height: 2px;
+    background: #c6a15b;
+    margin: 12px auto 0;
+}
+
+section {
+    margin-top: 30px;
+}
+
+h3 {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #a4813f;
+    margin-bottom: 18px;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.client-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.field.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #777;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #d8cdb9;
+    background: transparent;
+    padding: 9px 3px;
+    outline: none;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-bottom-color: #b18b48;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 55px;
+}
+
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.invoice-table th {
+    background: #2d2a26;
+    color: #fff;
+    padding: 13px 10px;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.invoice-table td {
+    padding: 13px 10px;
+    border-bottom: 1px solid #e4ddd2;
+}
+
+.invoice-table input {
+    border-bottom: none;
+    padding: 5px 0;
+}
+
+.amount {
+    text-align: right;
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+}
+
+.total-box {
+    width: 330px;
+    margin-left: auto;
+    margin-top: 25px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.total-row input {
+    width: 130px;
+    text-align: right;
+    border-bottom: 1px solid #d8cdb9;
+}
+
+.grand-total {
+    border-top: 2px solid #c6a15b;
+    margin-top: 8px;
+    padding-top: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.grand-total span:last-child {
+    color: #a4813f;
+}
+
+.notes {
+    margin-top: 35px;
+}
+
+.notes textarea {
+    border: 1px solid #ded5c7;
+    padding: 12px;
+    min-height: 80px;
+}
+
+.invoice footer {
+    text-align: center;
+    margin-top: 45px;
+    padding-top: 25px;
+    border-top: 1px solid #e2d8ca;
+}
+
+.invoice footer h4 {
+    font-size: 20px;
+    letter-spacing: 3px;
+    font-weight: normal;
+}
+
+.invoice footer p {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: #777;
+    margin-top: 7px;
+    letter-spacing: 1px;
+}
+
+.invoice .signature {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 60px;
+    margin-top: 45px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: #777;
+}
+
+.signature-box {
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.permanent-signature-box {
+    width: 100%;
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #999;
+    padding-top: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d2a26;
+    letter-spacing: 1px;
+}
+
+.signature-name {
+    font-family: "Brush Script MT", "Segoe Script", cursive;
+    font-size: 28px;
+    font-weight: 500;
+    color: #222;
+    white-space: nowrap;
+}
+
+.upload-field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 46px;
+    border: 1px dashed #c6a15b;
+    border-radius: 8px;
+    background: #faf7f3;
+    padding: 8px 10px;
+    cursor: pointer;
+    color: #2d2a26;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.upload-field input {
+    display: none;
+}
+
+.invoice footer textarea {
+    width: 100%;
+    border: 1px solid #ded5c7;
+    padding: 12px;
+    min-height: 120px;
+    margin-bottom: 18px;
+    text-align: left;
+    background: #faf7f3;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+button {
+    background: #2d2a26;
+    color: white;
+    border: none;
+    padding: 13px 30px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 11px;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background: #a4813f;
+}
+
+.status-message {
+    margin-top: 18px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    min-height: 20px;
+    color: #1f6f43;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.status-message.visible {
+    opacity: 1;
+}
+
+@media (max-width: 700px) {
+    body {
+        padding: 15px;
+    }
+
+    .invoice {
+        padding: 35px 25px;
+    }
+
+    .details-grid,
+    .client-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .field.full {
+        grid-column: auto;
+    }
+
+    .total-box {
+        width: 100%;
+    }
+
+    .invoice-table {
+        font-size: 12px;
+    }
+
+    .brand {
+        font-size: 27px;
+        letter-spacing: 5px;
+    }
+
+    .invoice::before {
+        inset: 8px;
+    }
+
+    .invoice .signature {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .signature-box {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .invoice {
+        box-shadow: none;
+        max-width: 100%;
+    }
+
+    .buttons,
+    .status-message {
+        display: none;
+    }
+}
+
+</style>
